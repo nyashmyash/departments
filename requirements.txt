@@ -1,0 +1,4 @@
+Django==3.2.7
+drf-spectacular==0.18.1
+djangorestframework==3.12.4
+

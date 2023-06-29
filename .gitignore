@@ -1,0 +1,16 @@
+*.pyc
+__pycache
+.pytest_cache
+.DS_Store
+.idea
+.data
+.env.dev
+.env.staging
+.env.staging.db
+*.sqlite3
+# coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
