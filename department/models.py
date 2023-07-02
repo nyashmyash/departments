@@ -3,12 +3,12 @@ from django.db import models
 
 class Employee(models.Model):
     id = models.AutoField(primary_key=True)
-    full_name = models.CharField(unique=True, max_length=100, null=True, blank=True)
+    full_name = models.CharField(unique=True, max_length=100, null=True, blank=True, db_index=True)
     foto = models.CharField(max_length=100, null=True, blank=True)
     position = models.CharField(max_length=100, null=True, blank=True)
     salary = models.PositiveIntegerField(default=0, blank=True, null=True)
     age = models.PositiveIntegerField(default=0, blank=True, null=True)
-    department = models.ForeignKey(to='Department', on_delete=models.PROTECT, null=False)
+    department = models.ForeignKey(to='Department', on_delete=models.CASCADE, null=False)
 
     class Meta:
         verbose_name = 'Сотрудник'
@@ -21,7 +21,7 @@ class Employee(models.Model):
 class Department(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=True, blank=True)
-    director = models.ForeignKey(to='Employee', related_name='director_department', on_delete=models.PROTECT, null=True, blank=True)
+    director = models.ForeignKey(to='Employee', related_name='director_department', on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Департамент'
